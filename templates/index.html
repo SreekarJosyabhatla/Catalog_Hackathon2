@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Assessment Board</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5">Smart Assessment Board</h1>
+      <a href="{{ url_for('create_quiz') }}" class="btn btn-primary mt-3 mb-3"
+        >Create Quiz</a
+      >
+      <h2>Available Quizzes</h2>
+      <ul class="list-group">
+        {% for quiz in quizzes %}
+        <li class="list-group-item">
+          <a href="{{ url_for('participate', quiz_id=loop.index0) }}"
+            >{{ quiz.name }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
